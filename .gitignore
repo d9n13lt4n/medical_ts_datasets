@@ -1,3 +1,7 @@
 __pycache__/
 *.pyc
 medical_ts_datasets.egg-info/
+
+# Other ignores
+venv/
+output/
