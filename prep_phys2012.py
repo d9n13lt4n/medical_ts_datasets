@@ -37,4 +37,18 @@ print(f"#Features: {len(feats)}")
 print(f"data.shape: {data_12.shape}")
 
 df = pd.DataFrame(data_12, columns=feats)
+
+# Merge Gender and ICU Type
+df = df_12.drop("Gender_0", inplace=False, axis=1)
+df = df.rename({'Gender_1': 'Gender'}, axis='columns')
+df = df.drop("ICUType_1", inplace=False, axis=1)
+df = df.drop("ICUType_2", inplace=False, axis=1)
+df = df.drop("ICUType_3", inplace=False, axis=1)
+df = df.drop("ICUType_4", inplace=False, axis=1)
+df.insert(6, 'ICUType', icu_type)
+
+# Change data type
+df['Index'] = df['Index'].apply(np.int64)
+df['Label'] = df['Label'].apply(np.int64)
+
 df.to_csv("output/physionet2012.csv", index=False)

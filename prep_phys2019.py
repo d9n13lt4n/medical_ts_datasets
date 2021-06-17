@@ -37,4 +37,13 @@ print(f"#Features: {len(feats)}")
 print(f"data.shape: {data_19.shape}")
 
 df = pd.DataFrame(data_19, columns=feats)
+
+# Merge Gender columns
+df = df_19.drop("Gender_0", inplace=False, axis=1)
+df = df.rename({'Gender_1': 'Gender'}, axis='columns')
+
+# Change data type
+df['Index'] = df['Index'].apply(np.int64)
+df['Label'] = df['Label'].apply(np.int64)
+
 df.to_csv("output/physionet2019.csv", index=False)
