@@ -39,7 +39,7 @@ print(f"data.shape: {data_12.shape}")
 df = pd.DataFrame(data_12, columns=feats)
 
 # Merge Gender and ICU Type
-df = df_12.drop("Gender_0", inplace=False, axis=1)
+df = df.drop("Gender_0", inplace=False, axis=1)
 df = df.rename({'Gender_1': 'Gender'}, axis='columns')
 df = df.drop("ICUType_1", inplace=False, axis=1)
 df = df.drop("ICUType_2", inplace=False, axis=1)

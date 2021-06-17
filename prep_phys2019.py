@@ -39,7 +39,7 @@ print(f"data.shape: {data_19.shape}")
 df = pd.DataFrame(data_19, columns=feats)
 
 # Merge Gender columns
-df = df_19.drop("Gender_0", inplace=False, axis=1)
+df = df.drop("Gender_0", inplace=False, axis=1)
 df = df.rename({'Gender_1': 'Gender'}, axis='columns')
 
 # Change data type
