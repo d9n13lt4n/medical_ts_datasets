@@ -41,6 +41,12 @@ df = pd.DataFrame(data_12, columns=feats)
 # Merge Gender and ICU Type
 df = df.drop("Gender_0", inplace=False, axis=1)
 df = df.rename({'Gender_1': 'Gender'}, axis='columns')
+
+icu = df[["ICUType_1", "ICUType_2", "ICUType_3", "ICUType_4"]]
+icu_type = []
+for index, row in icu.iterrows():
+    icu_type.append((np.argmax(row.tolist())+1))
+
 df = df.drop("ICUType_1", inplace=False, axis=1)
 df = df.drop("ICUType_2", inplace=False, axis=1)
 df = df.drop("ICUType_3", inplace=False, axis=1)
